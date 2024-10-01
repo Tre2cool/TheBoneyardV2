@@ -6,6 +6,8 @@ public class KingWeapon : MonoBehaviour
 {
 
 	public int attackDamage = 20;
+     public int minDmg = 10;
+    public int maxDmg = 15;
 	//public int enragedAttackDamage = 40;
 
     public Transform attackPoint;
@@ -38,13 +40,15 @@ public class KingWeapon : MonoBehaviour
             Debug.Log("King Attack");
         }*/
 
+         int RandDamage = Random.Range(minDmg,maxDmg);
+
         Collider2D[] damage = Physics2D.OverlapCircleAll( attackPoint.position, attackRange, attackMask );
 
         for (int i = 0; i < damage.Length; i++){
             
            //Destroy( damage[i].gameObject );
            //FindObjectOfType<GameSession>().ResetGameSession();
-           FindObjectOfType<GameSession>().TakeEnemyHit(attackDamage);
+           FindObjectOfType<GameSession>().TakeEnemyHit(RandDamage);
             Debug.Log("Attack()");
         }
     

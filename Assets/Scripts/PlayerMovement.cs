@@ -11,11 +11,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 20f;
 
     [SerializeField] float levelLoadDelay = 3f;
+    
 
     [Header ("Attack Properties")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask attackMask;
+
 
 
     Vector2 moveInput;
@@ -104,12 +106,12 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    
+
     public void ResetAnim(){
         myAnimator.ResetTrigger("Hurt");
          //Debug.Log("Reset Hurt");
     }
-
-    
 
     
 
@@ -158,14 +160,25 @@ public class PlayerMovement : MonoBehaviour
         myAnimator.SetTrigger("Attack");
         Collider2D[] damage = Physics2D.OverlapCircleAll( attackPoint.position, attackRange, attackMask );
 
-        for (int i = 0; i < damage.Length; i++){
+       /*for (int i = 0; i < damage.Length; i++){
             //Destroy( damage[i].gameObject );
 
-            FindObjectOfType<KingBoss>().TakeDamage();
+           //FindObjectOfType<KingBoss>().TakeDamage();
+              FindObjectOfType<Bat>().TakeDamage();
 
             //Debug.Log("Onfire");
 
-        }
+        }*/
+
+         foreach (Collider2D enemy in damage)
+            {
+                if (enemy.gameObject.tag == "Enemies") {}
+                //enemy.GetComponent<Bat>().TakeDamage();
+                //enemy.GetComponent<KingBoss>().TakeDamage();
+                enemy.gameObject.GetComponent<EnemyHealth>().TakeDamage();
+                 Debug.Log("Triggered by Enemy");
+
+            }
 
         /*if(attackedBlocked)
             return;

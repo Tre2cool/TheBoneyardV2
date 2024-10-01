@@ -11,6 +11,8 @@ public class KingBoss : MonoBehaviour
 
     public int maxHealth = 200;
 	public int currentHealth;
+    public int minDmg = 1;
+    public int maxDmg = 10;
 
 	public HealthBar healthBar;
 
@@ -55,16 +57,19 @@ public class KingBoss : MonoBehaviour
         }
     }
 
-    public void TakeDamage(){
+    /*public void TakeDamage(){
         
+        int RandDamage = Random.Range(minDmg,maxDmg);
+
         if(currentHealth > 1){
-            TakeLife(20);
+            TakeLife(RandDamage);
+            Debug.Log(currentHealth);
         }
         else{
 
             currentHealth = 0;
             Debug.Log("King dead");
-            StartCoroutine(KindDeathLoad());
+            StartCoroutine(KingDeathLoad());
         }
       
     }
@@ -79,9 +84,41 @@ public class KingBoss : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         
         
+    }*/
+    public void TakeDamage(){
+        
+        int RandDamage = Random.Range(minDmg,maxDmg);
+        
+            TakeLife(RandDamage);
+            //Debug.Log(currentHealth);
+      
     }
 
-       IEnumerator KindDeathLoad(){
+     void TakeLife(int damage){
+
+
+        myAnimator.SetTrigger("Hit");
+
+
+        Debug.Log($"Damage amount:  {damage}");
+        currentHealth -= damage;
+        Debug.Log($"Current Health:  {currentHealth}");
+
+        healthBar.SetHealth(currentHealth);
+
+        if(currentHealth <= 0){
+            //currentHealth = 0;
+            Debug.Log("King dead");
+            Destroy(gameObject);
+           // StartCoroutine(KingDeathLoad());
+
+        }
+        
+        
+    }
+
+
+       IEnumerator KingDeathLoad(){
 
         myAnimator.SetTrigger("Dead");
 

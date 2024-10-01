@@ -24,7 +24,7 @@ TagManager:
   - Misc Background
   - Main Castle Level
   - Bosses
-  - 
+  - Enemy Bound
   - 
   - 
   - 
@@ -74,6 +74,9 @@ TagManager:
   - name: Main Castle Level
     uniqueID: 1104708131
     locked: 0
+  - name: Main Castle Level D
+    uniqueID: 1906555973
+    locked: 0
   - name: Main Castle Level B
     uniqueID: 2813724867
     locked: 0
@@ -107,9 +110,6 @@ TagManager:
   - name: Castle Terrain
     uniqueID: 3787897311
     locked: 0
-  - name: Main Castle Level D
-    uniqueID: 1906555973
-    locked: 0
   - name: Misc Background
     uniqueID: 1139013803
     locked: 0
@@ -136,4 +136,7 @@ TagManager:
     locked: 0
   - name: Boss
     uniqueID: 1281327323
+    locked: 0
+  - name: Main Castle Level I
+    uniqueID: 3938439377
     locked: 0
